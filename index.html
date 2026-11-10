@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Petit Jardin · lichte thee voor fijnproevers</title>
+<meta name="description" content="Delicate, lichte thee uit een kleine tuin. Vier smaken, zacht gebrouwen, voor wie het subtiele proeft. Schrijf je in voor een rustig welkom in je inbox.">
+<meta name="theme-color" content="#F6F1E7">
+<meta property="og:title" content="Petit Jardin · lichte thee voor fijnproevers">
+<meta property="og:description" content="Een moment van rust, in elk kopje. Vier lichte smaken, zacht gebrouwen.">
+<meta property="og:image" content="assets/img/collectie.jpg">
+<link rel="icon" href="assets/logo/bloesemboom-v3-icoon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --indigo:#39597F;
+  --diep:#233A55;
+  --mist:#C9D3DA;
+  --washi:#F6F1E7;
+  --salie:#6E7F76;
+  --blush:#E3CBC8;
+  --inkt:#221F1C;
+  --hanko:#B5483B;
+  --indigo-60:rgba(57,89,127,.6);
+  --indigo-30:rgba(57,89,127,.3);
+  --indigo-12:rgba(57,89,127,.12);
+  --kop:"Syne", "Helvetica Neue", Arial, sans-serif;
+  --tekst:"Zen Maru Gothic", "Hiragino Maru Gothic ProN", system-ui, sans-serif;
+  --breed:min(1180px, 100% - 2*clamp(20px, 5vw, 56px));
+  --ruimte:clamp(88px, 13vw, 168px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--washi);color:var(--diep);font-family:var(--tekst);font-size:clamp(17px,1.05vw + 12px,19px);line-height:1.75;-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--kop);font-weight:600;color:var(--indigo);margin:0;letter-spacing:-.01em}
+p{margin:0}
+.wrap{width:var(--breed);margin-inline:auto}
+:focus-visible{outline:2px solid var(--indigo);outline-offset:4px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:12px;background:var(--diep);color:var(--washi);padding:10px 16px;border-radius:999px;z-index:10}
+.skip:focus{left:12px}
+
+/* ── knoppen ── */
+.knop{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 28px;border-radius:999px;font-family:var(--kop);font-weight:600;font-size:16px;text-decoration:none;border:1px solid var(--indigo);background:var(--indigo);color:var(--washi);cursor:pointer;transition:background-color .2s ease, color .2s ease}
+.knop:hover{background:var(--diep);border-color:var(--diep)}
+.knop--stil{background:transparent;color:var(--indigo)}
+.knop--stil:hover{background:var(--indigo-12);color:var(--diep);border-color:var(--indigo)}
+
+/* ── kop ── */
+.kopbalk{position:sticky;top:0;z-index:5;background:rgba(246,241,231,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
+.kopbalk.is-gescrold{border-bottom-color:var(--indigo-12)}
+.kopbalk .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:24px}
+.merk{display:flex;align-items:center;gap:12px;text-decoration:none}
+.merk img{width:44px;height:44px}
+.merk span{font-family:var(--kop);font-weight:600;font-size:20px;color:var(--indigo)}
+.nav{display:flex;align-items:center;gap:clamp(16px,2.6vw,36px)}
+.nav a:not(.knop){font-size:16px;text-decoration:none;color:var(--diep)}
+.nav a:not(.knop):hover{color:var(--indigo);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+.nav .knop{min-height:42px;padding:0 20px;font-size:15px}
+
+/* ── hero ── */
+.hero{position:relative;padding-block:clamp(40px,7vw,96px) var(--ruimte)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:center;gap:clamp(32px,6vw,96px)}
+.hero__tekst{position:relative;padding-left:clamp(0px,4vw,56px)}
+.tategaki{position:absolute;left:0;top:6px;writing-mode:vertical-rl;font-size:15px;letter-spacing:.5em;color:var(--salie)}
+.hero__onder{font-size:16px;color:var(--salie);margin-bottom:28px}
+.hero h1{font-size:clamp(40px,5.4vw,76px);line-height:1.04;font-weight:600;max-width:11ch}
+.hero__sub{margin-top:28px;max-width:32ch;font-size:clamp(18px,1.4vw,21px);color:var(--diep)}
+.hero__acties{margin-top:40px;display:flex;flex-wrap:wrap;gap:12px}
+
+.venster{position:relative;justify-self:end;width:min(100%,560px);aspect-ratio:1}
+.venster__ring{position:absolute;inset:-18px;border:1px solid var(--indigo-30);border-radius:50%}
+.venster__beeld{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:var(--mist)}
+.venster__beeld video,.venster__beeld img{width:100%;height:100%;object-fit:cover}
+.hanko{position:absolute;right:6%;bottom:4%;width:56px;height:56px;border-radius:8px;background:var(--hanko);color:var(--washi);display:grid;place-items:center;font-size:30px;font-weight:700;transform:rotate(-4deg);box-shadow:0 0 0 3px var(--washi)}
+.venster__bijschrift{position:absolute;left:-8px;bottom:-56px;font-size:14px;color:var(--salie)}
+
+/* openingsmoment: het ronde venster gaat open */
+@media (prefers-reduced-motion:no-preference){
+  .venster__beeld{animation:open 1.6s cubic-bezier(.65,0,.2,1) .15s both}
+  .venster__ring{animation:ring 1.6s ease-out .9s both}
+  .hanko{animation:stempel .5s cubic-bezier(.3,1.6,.5,1) 1.5s both}
+  @keyframes open{from{clip-path:circle(0% at 50% 50%)}to{clip-path:circle(50% at 50% 50%)}}
+  @keyframes ring{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+  @keyframes stempel{from{opacity:0;transform:rotate(-4deg) scale(1.5)}to{opacity:1;transform:rotate(-4deg) scale(1)}}
+}
+
+/* ── golven (seigaiha) ── */
+.golf{height:56px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='28' viewBox='0 0 56 28'%3E%3Cg fill='none' stroke='%2339597F' stroke-opacity='.35' stroke-width='1'%3E%3Cpath d='M0 28a28 28 0 0 1 56 0M8 28a20 20 0 0 1 40 0M16 28a12 12 0 0 1 24 0M24 28a4 4 0 0 1 8 0'/%3E%3Cpath d='M-28 14a28 28 0 0 1 56 0M28 14a28 28 0 0 1 56 0'/%3E%3C/g%3E%3C/svg%3E");background-size:56px 28px}
+.golf--licht{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='28' viewBox='0 0 56 28'%3E%3Cg fill='none' stroke='%23F6F1E7' stroke-opacity='.28' stroke-width='1'%3E%3Cpath d='M0 28a28 28 0 0 1 56 0M8 28a20 20 0 0 1 40 0M16 28a12 12 0 0 1 24 0M24 28a4 4 0 0 1 8 0'/%3E%3Cpath d='M-28 14a28 28 0 0 1 56 0M28 14a28 28 0 0 1 56 0'/%3E%3C/g%3E%3C/svg%3E")}
+
+/* ── sectie-algemeen ── */
+.sectie{padding-block:var(--ruimte)}
+.sectie h2{font-size:clamp(32px,3.6vw,52px);line-height:1.1}
+
+/* ── verhaal ── */
+.verhaal .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr);gap:clamp(40px,8vw,128px);align-items:center}
+.verhaal__foto{position:relative;width:min(100%,420px);aspect-ratio:1;border-radius:50%;overflow:hidden}
+.verhaal__foto img{width:100%;height:100%;object-fit:cover}
+.verhaal__tekst{max-width:56ch}
+.verhaal__tekst h2{margin-bottom:36px}
+.verhaal__tekst p+p{margin-top:20px}
+.verhaal__kanji{font-size:clamp(22px,2vw,28px);color:var(--indigo);letter-spacing:.2em}
+
+/* ── smaken ── */
+.smaken{background:var(--mist)}
+.smaken__kop{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;margin-bottom:clamp(48px,6vw,80px)}
+.smaken__kop p{max-width:34ch;color:var(--diep)}
+.smaken__lijst{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(24px,3vw,48px)}
+.smaak{display:flex;flex-direction:column}
+.smaak__foto{aspect-ratio:1;border-radius:50%;overflow:hidden;margin-bottom:28px;background:var(--indigo)}
+.smaak__foto img{width:100%;height:100%;object-fit:cover;transform:scale(1.08)}
+.smaak:nth-child(even){padding-top:clamp(0px,4vw,56px)}
+.smaak h3{font-size:21px;line-height:1.25}
+.smaak p{margin-top:10px;font-size:16px;line-height:1.65}
+.smaak__ritueel{margin-top:16px;padding-top:14px;border-top:1px solid var(--indigo-30);font-size:15px;color:var(--indigo);font-variant-numeric:tabular-nums}
+.smaken__voet{margin-top:clamp(48px,6vw,80px);font-size:17px}
+.smaken__voet a{color:var(--indigo);text-underline-offset:5px}
+
+/* ── ritueel ── */
+.ritueel .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(48px,8vw,128px);align-items:center}
+.ritueel h2{margin-bottom:clamp(40px,5vw,64px)}
+.stappen{list-style:none;margin:0;padding:0;counter-reset:stap}
+.stap{position:relative;display:grid;grid-template-columns:56px 1fr;gap:24px;padding-bottom:40px}
+.stap:last-child{padding-bottom:0}
+.stap::before{counter-increment:stap;content:counter(stap);width:56px;height:56px;border-radius:50%;border:1px solid var(--indigo);display:grid;place-items:center;font-family:var(--kop);font-weight:600;color:var(--indigo);background:var(--washi);position:relative;z-index:1}
+.stap:not(:last-child)::after{content:"";position:absolute;left:28px;top:56px;bottom:0;width:1px;background:var(--indigo-30)}
+.stap h3{font-size:22px;padding-top:12px;margin-bottom:6px}
+.stap p{max-width:40ch}
+.film{justify-self:end;width:min(100%,360px)}
+.film__kader{position:relative;aspect-ratio:9/16;border-radius:180px 180px 24px 24px;overflow:hidden;background:var(--diep)}
+.film__kader video{width:100%;height:100%;object-fit:cover}
+.film__speel{position:absolute;inset:auto 0 24px 0;margin-inline:auto;width:max-content}
+.film__speel[hidden]{display:none}
+.film figcaption{margin-top:16px;font-size:14px;color:var(--salie);line-height:1.6}
+
+/* ── ademruimte ── */
+.adem{background:var(--diep);color:var(--washi);text-align:center}
+.adem blockquote{margin-block:0;padding-block:clamp(96px,14vw,176px)}
+.adem p{font-family:var(--kop);font-weight:500;font-size:clamp(28px,3.4vw,48px);line-height:1.2;max-width:18ch;margin-inline:auto;color:var(--washi)}
+.adem footer{margin-top:28px;font-size:15px;color:var(--mist);letter-spacing:.3em}
+
+/* ── inschrijven ── */
+.inschrijven{background:var(--indigo);color:var(--washi)}
+.inschrijven .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,7vw,112px);align-items:center}
+.inschrijven h2{color:var(--washi)}
+.inschrijven__tekst p{margin-top:28px;max-width:40ch;color:#E6E9EC}
+.inschrijven__zakje{margin-top:48px;width:180px;aspect-ratio:1;border-radius:50%;overflow:hidden;border:1px solid rgba(246,241,231,.35);padding:8px}
+.inschrijven__zakje img{border-radius:50%;width:100%;height:100%;object-fit:cover}
+
+.formulier{background:var(--washi);color:var(--diep);border-radius:28px;padding:clamp(28px,4vw,48px)}
+.veld{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.veld label{font-size:15px;font-weight:500}
+.veld input{font:inherit;font-size:17px;color:var(--inkt);background:#fff;border:1px solid var(--indigo-30);border-radius:14px;min-height:52px;padding:0 18px;transition:border-color .2s}
+.veld input:hover{border-color:var(--indigo-60)}
+.veld input:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px var(--indigo-12)}
+.veld input[aria-invalid="true"]{border-color:var(--hanko)}
+.akkoord{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:15px;line-height:1.55;margin:4px 0 28px}
+.akkoord input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--indigo)}
+.formulier .knop{width:100%}
+.formulier .knop[disabled]{opacity:.6;cursor:progress}
+.formulier__klein{margin-top:16px;font-size:14px;color:var(--salie);text-align:center}
+.formulier__fout{margin-top:14px;font-size:15px;color:var(--hanko);min-height:0}
+.formulier__dank{text-align:center;padding-block:24px}
+.formulier__dank h3{font-size:26px;margin-bottom:12px}
+.formulier__dank[hidden],.formulier form[hidden]{display:none}
+.verborgen{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+
+/* ── voet ── */
+.voet{background:var(--diep);color:var(--mist);padding-block:64px 48px;font-size:14px;line-height:1.7}
+.voet .wrap{display:grid;grid-template-columns:auto 1fr;gap:clamp(32px,6vw,96px);align-items:start}
+.voet img{width:220px;margin-left:-14px}
+.voet p+p{margin-top:12px}
+.voet a{color:var(--washi)}
+
+/* ── responsief ── */
+@media (max-width:900px){
+  .hero .wrap,.verhaal .wrap,.ritueel .wrap,.inschrijven .wrap,.voet .wrap{grid-template-columns:1fr}
+  .venster{justify-self:center;width:min(86vw,460px);margin-top:16px}
+  .venster__bijschrift{left:0;right:0;text-align:center;bottom:-48px}
+  .verhaal__foto{width:min(70vw,360px);margin-inline:auto}
+  .smaken__lijst{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .smaak:nth-child(even){padding-top:32px}
+  .film{justify-self:center}
+  .inschrijven__zakje{display:none}
+  .nav a:not(.knop){display:none}
+}
+@media (max-width:480px){
+  .smaken__lijst{grid-template-columns:1fr;gap:56px}
+  .smaak:nth-child(even){padding-top:0}
+  .smaak__foto{width:78%;margin-inline:auto}
+  .tategaki{display:none}
+  .hero__tekst{padding-left:0}
+  .merk span{font-size:18px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#inhoud">Naar de inhoud</a>
+
+<header class="kopbalk" id="kopbalk">
+  <div class="wrap">
+    <a class="merk" href="#top" aria-label="Petit Jardin, naar boven">
+      <img src="assets/logo/bloesemboom-v3-icoon.svg" alt="" width="44" height="44">
+      <span>Petit Jardin</span>
+    </a>
+    <nav class="nav" aria-label="Hoofdmenu">
+      <a href="#verhaal">Verhaal</a>
+      <a href="#smaken">Smaken</a>
+      <a href="#ritueel">Ritueel</a>
+      <a class="knop" href="#inschrijven">Inschrijven</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inhoud">
+  <section class="hero" id="top" aria-labelledby="hero-kop">
+    <div class="wrap">
+      <div class="hero__tekst">
+        <span class="tategaki" lang="ja" aria-hidden="true">小さな庭</span>
+        <p class="hero__onder">Thee in het tuintje</p>
+        <h1 id="hero-kop">Een moment van rust, in elk kopje.</h1>
+        <p class="hero__sub">Lichte, delicate thee voor wie liever proeft dan haast.</p>
+        <div class="hero__acties">
+          <a class="knop" href="#smaken">Ontdek de smaken</a>
+          <a class="knop knop--stil" href="#inschrijven">Schrijf je in</a>
+        </div>
+      </div>
+      <figure class="venster" style="margin:0">
+        <div class="venster__ring" aria-hidden="true"></div>
+        <div class="venster__beeld">
+          <video id="giet" src="assets/video/giet-loop.mp4" poster="assets/video/giet-poster.jpg" muted loop playsinline preload="auto" aria-label="Een indigo theepot giet lichtgroene thee in een witte porseleinen kom, met stoom en een bloesemtak op de achtergrond."></video>
+        </div>
+        <span class="hanko" lang="ja" aria-hidden="true">庭</span>
+        <figcaption class="venster__bijschrift">Groene thee &amp; citroengras, 80 °C</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="golf" aria-hidden="true"></div>
+
+  <section class="sectie verhaal" id="verhaal" aria-labelledby="verhaal-kop">
+    <div class="wrap">
+      <div class="verhaal__foto">
+        <picture>
+          <source srcset="assets/img/collectie.webp" type="image/webp">
+          <img src="assets/img/collectie.jpg" alt="De vier theedoosjes van de collectie naast elkaar op een indigo achtergrond." width="960" height="960" loading="lazy">
+        </picture>
+      </div>
+      <div class="verhaal__tekst">
+        <h2 id="verhaal-kop">Een klein tuintje, in je kopje.</h2>
+        <p>Petit Jardin betekent kleine tuin. In het Japans: <span class="verhaal__kanji" lang="ja">小さな庭</span></p>
+        <p>We houden van thee die niet roept. Thee die je ruikt voor je ze proeft, die licht blijft op de tong en ruimte laat voor een gedachte.</p>
+        <p>Daarom kiezen we voor zachte melanges en een korte, rustige trektijd. Geen sterke zwarte thee, wel helderheid, bloesem en een warme toets.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectie smaken" id="smaken" aria-labelledby="smaken-kop">
+    <div class="wrap">
+      <div class="smaken__kop">
+        <h2 id="smaken-kop">Vier smaken, zacht gebrouwen.</h2>
+        <p>Elke smaak heeft zijn eigen temperatuur en trektijd. Die staan er telkens bij.</p>
+      </div>
+      <ul class="smaken__lijst">
+        <li class="smaak">
+          <div class="smaak__foto"><picture><source srcset="assets/img/groene-thee.webp" type="image/webp"><img src="assets/img/groene-thee.jpg" alt="Doosje groene thee met citroengras." width="960" height="960" loading="lazy"></picture></div>
+          <h3>Groene thee &amp; citroengras</h3>
+          <p>Fris en helder, als de eerste lentedag.</p>
+          <p class="smaak__ritueel">80 °C · 2–3 min</p>
+        </li>
+        <li class="smaak">
+          <div class="smaak__foto"><picture><source srcset="assets/img/kamille.webp" type="image/webp"><img src="assets/img/kamille.jpg" alt="Doosje kamille met honing." width="960" height="960" loading="lazy"></picture></div>
+          <h3>Kamille &amp; honing</h3>
+          <p>Bloemig en zacht, voor de stille uren.</p>
+          <p class="smaak__ritueel">95 °C · 5 min</p>
+        </li>
+        <li class="smaak">
+          <div class="smaak__foto"><picture><source srcset="assets/img/gember.webp" type="image/webp"><img src="assets/img/gember.jpg" alt="Doosje gember met kurkuma." width="960" height="960" loading="lazy"></picture></div>
+          <h3>Gember &amp; kurkuma</h3>
+          <p>Warmte die stil binnenkomt, nooit scherp.</p>
+          <p class="smaak__ritueel">95 °C · 5–7 min</p>
+        </li>
+        <li class="smaak">
+          <div class="smaak__foto"><picture><source srcset="assets/img/rooibos.webp" type="image/webp"><img src="assets/img/rooibos.jpg" alt="Doosje rooibos met bosbes." width="960" height="960" loading="lazy"></picture></div>
+          <h3>Rooibos &amp; bosbes</h3>
+          <p>Van nature zoet, rond en zacht rood.</p>
+          <p class="smaak__ritueel">95 °C · 5 min</p>
+        </li>
+      </ul>
+      <p class="smaken__voet">Twintig zakjes per doosje. Of begin met de proefset van vier. <a href="#inschrijven">Hoor het eerst via de nieuwsbrief</a>.</p>
+    </div>
+  </section>
+
+  <section class="sectie ritueel" id="ritueel" aria-labelledby="ritueel-kop">
+    <div class="wrap">
+      <div>
+        <h2 id="ritueel-kop">Eén kop. Vijf rustige minuten.</h2>
+        <ol class="stappen">
+          <li class="stap"><div><h3>Verwarm</h3><p>Laat het water net niet koken. Groene thee wil het iets koeler.</p></div></li>
+          <li class="stap"><div><h3>Wacht</h3><p>Twee tot zeven minuten, afhankelijk van de smaak. Kijk hoe de kleur langzaam komt.</p></div></li>
+          <li class="stap"><div><h3>Proef</h3><p>Zonder haast. De eerste slok zegt het meest.</p></div></li>
+        </ol>
+      </div>
+      <figure class="film" style="margin:0">
+        <div class="film__kader">
+          <video id="film" src="assets/video/petit-jardin-film.mp4" poster="assets/video/film-poster.jpg" playsinline preload="none" aria-label="Film van 18 seconden: thee wordt geschonken, een theedoosje landt op een houten blad en het logo van Petit Jardin verschijnt."></video>
+          <button class="knop film__speel" id="film-speel" type="button">Bekijk de film, met geluid</button>
+        </div>
+        <figcaption>18 seconden. Beeld deels gemaakt met Adobe Firefly, montage en muziek in code.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="adem" aria-label="Citaat">
+    <div class="golf golf--licht" aria-hidden="true"></div>
+    <blockquote class="wrap">
+      <p>Thee die niet roept, maar fluistert.</p>
+      <footer lang="ja">小さな庭</footer>
+    </blockquote>
+  </section>
+
+  <section class="sectie inschrijven" id="inschrijven" aria-labelledby="inschrijven-kop">
+    <div class="wrap">
+      <div class="inschrijven__tekst">
+        <h2 id="inschrijven-kop">Een zacht welkom in je inbox.</h2>
+        <p>Af en toe een brief uit de tuin: een nieuw ritueel, een seizoenssmaak, een rustig moment. Nooit vaker dan nodig.</p>
+        <div class="inschrijven__zakje">
+          <picture><source srcset="assets/img/zakje.webp" type="image/webp"><img src="assets/img/zakje.jpg" alt="Een doosje rooibos naast een los theezakje." width="960" height="960" loading="lazy"></picture>
+        </div>
+      </div>
+
+      <!-- MailerLite: embedded formulier "Petit Jardin – inschrijving (landingspagina)", groep Nieuwsbrief, dubbele opt-in -->
+      <div class="formulier">
+        <form id="ml-formulier" action="https://assets.mailerlite.com/jsonp/2782457/forms/203690827537450334/subscribe" method="post" novalidate>
+          <div class="veld">
+            <label for="voornaam">Voornaam</label>
+            <input id="voornaam" name="fields[name]" type="text" autocomplete="given-name" required>
+          </div>
+          <div class="veld">
+            <label for="email">E-mailadres</label>
+            <input id="email" name="fields[email]" type="email" autocomplete="email" inputmode="email" required>
+          </div>
+          <label class="akkoord">
+            <input id="akkoord" type="checkbox" name="gdpr[]" value="Nieuwsbrief" required>
+            <span>Ik wil de nieuwsbrief van Petit Jardin ontvangen en ga akkoord met de privacyverklaring.</span>
+          </label>
+          <input class="verborgen" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="hidden" name="ml-submit" value="1">
+          <input type="hidden" name="anticsrf" value="true">
+          <button class="knop" type="submit">Schrijf me in</button>
+          <p class="formulier__fout" id="formulier-fout" role="alert"></p>
+          <p class="formulier__klein">Je kunt je op elk moment uitschrijven. We delen je gegevens met niemand.</p>
+        </form>
+        <div class="formulier__dank" id="formulier-dank" hidden tabindex="-1">
+          <h3>Dank je.</h3>
+          <p>Kijk even in je inbox om je inschrijving te bevestigen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="voet">
+  <div class="wrap">
+    <img src="assets/logo/bloesemboom-v3-omgekeerd-transparant.svg" alt="Petit Jardin, 小さな庭" width="220" height="83" loading="lazy">
+    <div>
+      <p>Petit Jardin is een fictief merk, gemaakt voor een schoolopdracht van Jasper Van Deputte (Digitale Vormgeving, Arteveldehogeschool Gent). Prijzen en aanbiedingen zijn fictief.</p>
+      <p>Teksten en code opgesteld met Claude (AI). De giet-scène en de doosje-scène in de film zijn gemaakt met Adobe Firefly. Productfoto's: aangeleverd materiaal, bewerkt in Photoshop.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // kopbalk krijgt een lijn zodra je scrolt
+  var kop=document.getElementById('kopbalk');
+  addEventListener('scroll',function(){kop.classList.toggle('is-gescrold',scrollY>8)},{passive:true});
+
+  // hero-video enkel afspelen als bewegen mag
+  var giet=document.getElementById('giet');
+  var rustig=matchMedia('(prefers-reduced-motion: reduce)');
+  function zetGiet(){ if(rustig.matches){giet.pause()} else {var p=giet.play(); if(p&&p.catch)p.catch(function(){})} }
+  zetGiet(); rustig.addEventListener&&rustig.addEventListener('change',zetGiet);
+
+  // film met geluid start pas na een klik
+  var film=document.getElementById('film'), speel=document.getElementById('film-speel');
+  speel.addEventListener('click',function(){film.controls=true;film.play();speel.hidden=true;});
+  film.addEventListener('ended',function(){film.controls=false;film.load();speel.hidden=false;});
+
+  // MailerLite-formulier
+  var form=document.getElementById('ml-formulier'), fout=document.getElementById('formulier-fout'), dank=document.getElementById('formulier-dank');
+  var knop=form.querySelector('button[type=submit]');
+  function controleer(){
+    var v=form.querySelector('#voornaam'), e=form.querySelector('#email'), a=form.querySelector('#akkoord');
+    [v,e].forEach(function(i){i.removeAttribute('aria-invalid')});
+    if(!v.value.trim()){v.setAttribute('aria-invalid','true');v.focus();return 'Vul je voornaam in.'}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.value.trim())){e.setAttribute('aria-invalid','true');e.focus();return 'Vul een geldig e-mailadres in, zoals naam@voorbeeld.be.'}
+    if(!a.checked){a.focus();return 'Vink het vakje aan om de nieuwsbrief te ontvangen.'}
+    return '';
+  }
+  function bedankt(){form.hidden=true;dank.hidden=false;dank.focus();}
+  function opnieuw(m){fout.textContent=m;knop.disabled=false;knop.textContent='Schrijf me in';}
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault(); fout.textContent='';
+    if(form.website.value) return;
+    var m=controleer(); if(m){fout.textContent=m;return}
+    knop.disabled=true; knop.textContent='Even geduld';
+    var data=new FormData(form); data.delete('website');
+    fetch(form.action,{method:'POST',body:data})
+      .then(function(r){return r.json()})
+      .then(function(j){
+        if(j&&j.success){bedankt()}
+        else{opnieuw('Je inschrijving is niet gelukt. Controleer je e-mailadres en probeer opnieuw.')}
+      },function(){
+        // Een gewone POST komt bij MailerLite aan, ook als de browser het antwoord niet mag lezen (CORS).
+        // Enkel zonder verbinding is er echt niets verstuurd.
+        if(navigator.onLine){bedankt()}
+        else{opnieuw('Je inschrijving is niet verstuurd omdat er geen verbinding is. Probeer opnieuw.')}
+      });
+  });
+})();
+</script>
+</body>
+</html>
